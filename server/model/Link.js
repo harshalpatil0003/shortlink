@@ -17,10 +17,11 @@ const linkSchema = new Schema({
     },
     views: {
         type: Number,
+        default: 0,
         require: true,
-        dafault:0
     }
-}
+},
+    { timestamps: true }
 )
 
 const Link = model('Link', linkSchema);

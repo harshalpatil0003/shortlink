@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import {postLink} from './controllers/link.js'
+import {postLink,getslug} from './controllers/link.js'
 dotenv.config()
 
 const app = express()
@@ -30,15 +30,7 @@ app.get("/health", (req, res) => {
 
 
 app.post("/link",postLink)
-app.get("/:slug",async(req, res)=>{
-    const {slug}=req.params
-    res.json({
-        success:true,
-        slug:slug,
-        message:"Redirecting to target"
-
-    })
-})
+app.get("/:slug",getslug)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
