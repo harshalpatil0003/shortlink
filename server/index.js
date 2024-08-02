@@ -30,6 +30,15 @@ app.get("/health", (req, res) => {
 
 
 app.post("/link",postLink)
+app.get("/:slug",async(req, res)=>{
+    const {slug}=req.params
+    res.json({
+        success:true,
+        slug:slug,
+        message:"Redirecting to target"
+
+    })
+})
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

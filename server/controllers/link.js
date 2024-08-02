@@ -1,5 +1,5 @@
 
-import Link from "../model/Link.js";
+import Link from "./../model/Link.js";
 const postLink = async (req, res) => {
     const { target, title, slug } = req.body;
     const link = new Link({ target, title, slug })
@@ -11,6 +11,6 @@ const postLink = async (req, res) => {
         message: "Link saved successfully"
     })
 }
-export{
+export {
     postLink
 };
