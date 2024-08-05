@@ -3,6 +3,7 @@ import axios from 'axios'
 import './Home.css';
 import { toast, Toaster } from 'react-hot-toast'
 import linkCards from '../../components/links-cards/linkCards.js';
+import linkicon from '../Home/link.png'
 function Home() {
   const [linkdata, setlinkdata] = useState({
     title: "",
@@ -16,7 +17,10 @@ function Home() {
   }
   return (
     <div>
-      <h1 className='header'> Link Shortner</h1>
+      <div className='d-flex align-items-center gap-3 justify-content-center'>
+        <img src={linkicon} alt='link-icon' className='link-icon d-block ' />
+        <h1 className='header'> Link Shortner</h1>
+      </div>
       <div className=''>
         <form className='input-form p-4 rounded-2'>
           <div className='d-block d-flex flex-wrap justify-content-around '>
