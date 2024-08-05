@@ -27,6 +27,23 @@ const getslug = async (req, res) => {
     return res.redirect(link.target)
 
 }
+const getAllLinks = async (req, res) => {
+    try {
+      const links = await Link.find({Link});
+  
+      res.json({
+        success: true,
+        data: links,
+        message: "All Links Fetched Successfully"
+      });
+    } catch (error) {
+      res.status(404).json({
+        success: false,
+        message: "Error fetching links",
+        error: error.message
+      });
+    }
+  };
 export {
-    postLink, getslug
+    postLink, getslug,getAllLinks
 };
