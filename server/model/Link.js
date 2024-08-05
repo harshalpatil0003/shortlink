@@ -19,7 +19,14 @@ const linkSchema = new Schema({
         type: Number,
         default: 0,
         require: true,
+    },
+    user:{
+        type: Schema.Types.ObjectId,
+        ref:"User",
+        require: true
+
     }
+
 },
     { timestamps: true }
 )

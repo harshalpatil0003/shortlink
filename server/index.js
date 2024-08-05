@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import {postLink,getslug,getAllLinks} from './controllers/link.js'
+import { postLink, getslug,signup,signin,getuserlinks} from './controllers/link.js'
 dotenv.config()
 
 const app = express()
@@ -27,12 +27,14 @@ app.get("/health", (req, res) => {
     })
 }
 )
+app.post("/link", postLink)
+app.get("/links",getuserlinks)
 
+// app.get("/links", getAllLinks)
 
-app.post("/link",postLink)
-app.get("/links",getAllLinks)
-
-app.get("/:slug",getslug)
+app.get("/:slug", getslug)
+app.post("/signup", signup)
+app.post("/signin",signin)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

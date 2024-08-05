@@ -3,11 +3,11 @@
 .form-control{
     width: 400px;
     margin: 10px;
+
 }
 .input-form{
     box-shadow: 5px 5px 10px 1px #868585;
     background-color: #f0f0f0;
-  
 }
 .link-icon{
     height: 50px;
@@ -15,5 +15,10 @@
 
 .btn{
     display: block;
+}
+.link-cards{
+ height: 800px;
+    overflow-y: scroll;
+    overflow: scroll;
 }
 
