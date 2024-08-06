@@ -50,7 +50,7 @@ function Home() {
   });
   const create = async () => {
     const response = await axios.post(`${process.env.REACT_APP_API_URL}/link`, linkdata)
-
+   
     if (response.data.success) {
       toast.success("Link creaated Successfully")
       setUser({
@@ -62,6 +62,10 @@ function Home() {
     else {
       toast.error(response.data.message)
     }
+    setTimeout(()=>{
+      create()
+    },3000)
+
 
   }
   const getAllLinks = async () => {
@@ -91,6 +95,8 @@ function Home() {
           <input type="text" className='form-control' placeholder="title" value={linkdata.title} onChange={(e) => setlinkdata({ ...linkdata, title: e.target.value })} />
           <input type="text" className='form-control' placeholder="target" value={linkdata.target} onChange={(e) => setlinkdata({ ...linkdata, target: e.target.value })} />
           <input type="text" className='form-control' placeholder="slug" value={linkdata.slug} onChange={(e) => setlinkdata({ ...linkdata, slug: e.target.value })} />
+          <input type="text" className='form-control' placeholder="user" value={linkdata.user} onChange={(e) => setlinkdata({ ...linkdata, user: e.target.value })} />
+
         </div>
         <button type='button' className='btn btn-success d-block mx-auto mt-4 ' onClick={create}>Create</button>
 

@@ -1,6 +1,26 @@
 .login-form{
-    width: 600px;
+    width: 500px;
     display: block;
     margin: 0 auto;
-    border-radius: 20px;
+    border-radius: 10px;
+    background-color:#f0f0f0;
+    padding: 20px 10px;
+    box-shadow: 0 0 10px 1px #848181;
+}
+.inputs{
+    width: 450px;
+  
+}
+.form-control{
+    width: 400px;
+    display: block;
+    margin: 20px auto;
+}
+.links{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+.login-btn{
+    background-color: #0d6efd;
 }

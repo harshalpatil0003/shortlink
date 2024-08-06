@@ -4,26 +4,25 @@ import { Schema, model } from 'mongoose';
 const linkSchema = new Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     target: {
         type: String,
-        require: true
+        required: true
     },
     slug: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     views: {
         type: Number,
         default: 0,
-        require: true,
+        required: true,
     },
     user:{
         type: Schema.Types.ObjectId,
         ref:"User",
-        require: true
 
     }
 

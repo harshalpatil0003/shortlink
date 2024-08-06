@@ -28,27 +28,26 @@ function Login() {
     }
     return (
         <div>
-            <form className='border border-dark login-form p-4 my-5'>
-                
+            <h2 className='my-3'>Signin</h2>
+            <form className=' login-form'>
+                <div className='d-block mx-auto inputs'>
                     <input type="email" class="form-control" id="exampleInputEmail1"
                         value={email}
                         placeholder='Email'
                         onChange={(e) => setEmail(e.target.value)}
                         aria-describedby="emailHelp" />
-             
-      
+
+
                     <input type="password" class="form-control"
                         value={password}
                         placeholder='Password'
-                        onChange={(e) => setPassword(e.target.value)}/>
-         
-               
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-              
+                        onChange={(e) => setPassword(e.target.value)} />
+
                 <button type="button"
                     onClick={login}
-                    class="btn btn-primary">Submit</button>
-                <Link to='/signup'>Not have account? SignUp</Link>
+                    class="btn login-btn btn-success form-control">Login</button>
+                <p  className='links'>Not have account?  <Link to='/signup'>SignUp</Link > </p>
+                </div>
             </form>
             <Toaster />
         </div>

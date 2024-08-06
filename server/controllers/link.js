@@ -104,11 +104,8 @@ const signin = async (req, res) => {
 }
 const getuserlinks = async (req, res) => {
   const { userId } = req.query
-  console.log(userId)
 
   const user = await User.findById(userId)
-  console.log(user);
-  
 
   if (!user) {
     return res.json({
@@ -118,7 +115,8 @@ const getuserlinks = async (req, res) => {
     })
   }
   const links = await Link.find({ user: userId })
-  res.json({
+  // console.log(links)
+  return res.json({
     success: true,
     message: "All Links Fetched Successfully",
     data: links

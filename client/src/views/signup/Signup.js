@@ -33,10 +33,11 @@ function Signup() {
         }
     }
     return (
-        <div>
-            <h2>Signup Form</h2>
+        <div className='input'>
+            <h2 className='my-3'>Signup</h2>
             <form className="signup-form border border-dark mx-auto rounded-3">
                 <div>
+
                     <input type="text" id="username"
                         className='form-control'
                         placeholder='Name'
@@ -72,13 +73,12 @@ function Signup() {
                             <option>Others</option>
                         </select>
                     </div>
+                    <button className='btn login-btn btn-success d-block form-control' onClick={signup}>signup</button>
+                   <p className='links'>Already have an account? <Link to='/signin'> SignIn</Link></p> 
                 </div>
-
-                <button className='btn btn-success d-block' onClick={signup}>signup</button>
-                <Link to='/login'>Already have an account? SignIn</Link>
-            </form>
+            </form >
             <Toaster />
-        </div>
+        </div >
     )
 }
 
