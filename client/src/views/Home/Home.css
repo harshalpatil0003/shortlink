@@ -21,4 +21,8 @@
     overflow-y: scroll;
     overflow: scroll;
 }
-
+.btn-danger{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

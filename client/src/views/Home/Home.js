@@ -4,7 +4,27 @@ import './Home.css';
 import { toast, Toaster } from 'react-hot-toast'
 import LinkCards from './../../components/LinkCards/LinkCards.js';
 import linkicon from '../Home/link.png'
+import { Link } from 'react-router-dom';
+
 function Home() {
+  const logout = () => {
+    localStorage.clear()
+    toast.success("Logged out successfully..")
+    setTimeout(() => {
+      window.location.href = '/signin'
+    }, 3000)
+
+  }
+  const [user, setUser] = useState('')
+  useEffect(() => {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    if (currentUser) {
+      setUser(currentUser)
+    }
+    if (!currentUser) {
+      window.location.href = '/signin'
+    }
+  }, [])
   const [linkdata, setlinkdata] = useState({
     title: "",
     target: "",
@@ -42,6 +62,10 @@ function Home() {
       <div className='d-flex align-items-center gap-3 justify-content-center'>
         <img src={linkicon} alt='link-icon' className='link-icon d-block ' />
         <h1 className='header'> Link Shortner</h1>
+        <button type='button' className='btn btn-danger'
+          onClick={logout}
+        >Logout</button>
+
       </div>
 
       <form className='input-form p-4 rounded-2'>
@@ -54,8 +78,8 @@ function Home() {
 
       </form>
 
-      <h2>Your Short Links</h2>
-      <div className='link-cards'>
+      <h2>Hello {user.name}</h2>
+      {/* <div className='link-cards'>
         {links.map((link, i) => {
           const { title, slug, target, views, createdAt } = link
 
@@ -65,8 +89,10 @@ function Home() {
               target={target}
               views={views}
               createdAt={createdAt} />)
-        })}
-      </div>
+        })
+        }
+
+      </div> */}
 
       <Toaster />
 

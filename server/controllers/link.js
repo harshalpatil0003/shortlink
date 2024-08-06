@@ -97,7 +97,7 @@ const signin = async (req, res) => {
   else {
     return res.json({
       success: false,
-      message: "login failed",
+      message: "Invalid Credentials",
       data: null
     })
   }
