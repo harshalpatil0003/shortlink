@@ -8,27 +8,29 @@ import linkicon from '../Home/link.png'
 
 function Home() {
   const [links, setlinks] = useState([]);
-//logout function
+  const [user, setUser] = useState('')
+
+  //logout function
   const logout = () => {
     localStorage.clear()
     toast.success("Logged out successfully..")
     setTimeout(() => {
       window.location.href = '/signin'
-    }, 3000)
+    }, 1000)
   }
 
-  const fetchedlinks = async () => {
-    if (!user._id) {
-      return
-    }
-
-    toast.loading("Loading Links")
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/links?userId=${user._id}`)
-    toast.dismiss()
-
-    setlinks=(response.data.data)
-  }
-  const [user, setUser] = useState('')
+  // const fetchedlinks = async () => {
+  //   if (!user._id) {
+  //     return
+  //   }
+  //   toast.loading("Loading Links")
+  //   const response = await axios.get(`${process.env.REACT_APP_API_URL}/links?userId=${user._id}`)
+  //   toast.dismiss()
+  //   setlinks = (response.data.data)
+  // }
+  // useEffect(() => {
+  //   fetchedlinks()
+  // }, [user])
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -39,6 +41,7 @@ function Home() {
       window.location.href = '/signin'
     }
   }, [])
+
   const [linkdata, setlinkdata] = useState({
     title: "",
     target: "",
@@ -47,13 +50,14 @@ function Home() {
   });
   const create = async () => {
     const response = await axios.post(`${process.env.REACT_APP_API_URL}/link`, linkdata)
+
     if (response.data.success) {
       toast.success("Link creaated Successfully")
-      // setlinkdata = ({
-      //   title: "",
-      //   target: "",
-      //   slug: ""
-      // })
+      setUser({
+        title: "",
+        target: "",
+        slug: ""
+      })
     }
     else {
       toast.error(response.data.message)
@@ -62,9 +66,10 @@ function Home() {
   }
   const getAllLinks = async () => {
 
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/links`)
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/links?userId=${user._id}`)
+    toast.dismiss()
     setlinks(response.data.data)
-    toast.success("All Links Fetched Successfully")
+    // toast.success("All Links Fetched Successfully")
 
   }
   useEffect(() => {
@@ -91,19 +96,20 @@ function Home() {
 
       </form>
 
-      <h2>Hello {user.name}</h2>
+      <h2 className='user-link-header my-3'>Hello {user.name}</h2>
       <div className='link-cards'>
-        {links.map((link, i) => {
-          const { title, slug, target, views, createdAt } = link
+        {links?.map((link, i) => {
+          const { title, slug, target, views, createdAt, _id } = link
 
           return (
-            <LinkCards 
-            key={i}
-            title={title}
+            <LinkCards
+              _id={_id}
+              title={title}
               slug={slug}
               target={target}
               views={views}
-              createdAt={createdAt} />)
+              createdAt={createdAt}
+            />)
         })
         }
 

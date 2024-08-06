@@ -2,8 +2,8 @@
 import Link from "./../model/Link.js";
 import User from "../model/User.js";
 const postLink = async (req, res) => {
-  const { target, title, slug ,user} = req.body;
-  const link = new Link({ target, title, slug,user})
+  const { target, title, slug, user } = req.body;
+  const link = new Link({ target, title, slug, user })
 
   const savedLink = await link.save();
   res.json({
@@ -102,23 +102,28 @@ const signin = async (req, res) => {
     })
   }
 }
-const getuserlinks=async(req,res)=>{
-  const {userId}=req.query
-  const user=await User.findById(userId)
-  if(!user){
+const getuserlinks = async (req, res) => {
+  const { userId } = req.query
+  console.log(userId)
+
+  const user = await User.findById(userId)
+  console.log(user);
+  
+
+  if (!user) {
     return res.json({
-      success:false,
-      message:"User not found",
-      data:null
+      success: false,
+      message: "User not found",
+      data: null
     })
   }
-const links=await Link.find({user:userId})
-return res.json({
-  success:true,
-  message:"All Links Fetched Successfully",
-  data:links
-})
+  const links = await Link.find({ user: userId })
+  res.json({
+    success: true,
+    message: "All Links Fetched Successfully",
+    data: links
+  })
 }
 export {
-  postLink, getslug, signup, signin,getuserlinks
+  postLink, getslug, signup, signin, getuserlinks
 };
