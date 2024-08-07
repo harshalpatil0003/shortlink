@@ -2,7 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import { postLink, getslug,signup,signin,getuserlinks} from './controllers/link.js'
+import { postLink, getslug,signup,signin,getuserlinks,deletelink} from './controllers/link.js'
 dotenv.config()
 
 const app = express()
@@ -38,6 +38,9 @@ app.get("/:slug", getslug)
 app.post("/signup", signup)
 
 app.post("/signin",signin)
+
+app.delete("/link/:linkid", deletelink)
+
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

@@ -133,6 +133,18 @@ const getuserlinks = async (req, res) => {
     data: links
   })
 }
+
+const deletelink = async (req, res) => {
+  const { linkid } = req.params
+
+  await Link.deleteOne({_id: linkid})
+  res.json({
+      success: true,
+      data: null,
+      message: "Card Deleted"
+  })
+
+}
 export {
-  postLink, getslug, signup, signin, getuserlinks
+  postLink, getslug, signup, signin, getuserlinks,deletelink
 };

@@ -15,6 +15,7 @@ function Home() {
   //   }
   // },[])
 
+
   //logout function
   const logout = () => {
     localStorage.clear()
@@ -87,10 +88,10 @@ function Home() {
       return
     }
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/links?userId=${user._id}`)
-    
-      setlinks(response.data.data)
-      toast.dismiss()
-    
+
+    setlinks(response.data.data)
+    toast.dismiss()
+
     toast.success("All Links Fetched Successfully")
 
   }
@@ -98,7 +99,7 @@ function Home() {
     getAllLinks()
   }, [user])
 
-  
+
   return (
     <div>
       <div className='d-flex align-items-center gap-3 justify-content-center'>
@@ -124,12 +125,12 @@ function Home() {
       <h2 className='user-link-header my-3'>Hello {user.name}</h2>
       <div className='link-cards'>
         {links.map((link) => {
-          const { title, slug, target, views, createdAt} = link;
+          const {_id, title, slug, target, views, createdAt } = link;
 
           return (
             <LinkCards
               // key={_id}
-              // _id={_id}
+              _id={_id}
               title={title}
               slug={slug}
               target={target}
@@ -137,6 +138,8 @@ function Home() {
               createdAt={createdAt}
             />)
         })
+        }{
+          links.length === 0 && <h1 class="text-danger text-opacity-25 text-center">Link Not Found</h1>
         }
 
       </div>
