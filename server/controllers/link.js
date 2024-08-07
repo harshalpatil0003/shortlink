@@ -1,10 +1,11 @@
 
 import Link from "./../model/Link.js";
 import User from "../model/User.js";
-const postLink = async (req, res) => {
-  const { target, title, slug, user } = req.body;
-  const link = new Link({ target, title, slug, user })
 
+const postLink = async (req, res) => {
+  const { target, title, slug ,user} = req.body;
+  const link = new Link({ target, title, slug ,user})
+try{
   const savedLink = await link.save();
   res.json({
     success: true,
@@ -12,8 +13,18 @@ const postLink = async (req, res) => {
     message: "Link saved successfully"
   })
 }
+catch(e){
+res.json({
+  success:false,
+  message: e.message,
+  data:null
+
+})
+}
+
+}
 const getslug = async (req, res) => {
-  const { slug } = req.params
+  const { slug } = req.params;
   const link = await Link.findOne({ slug })
 
   if (!link) {
@@ -25,7 +36,7 @@ const getslug = async (req, res) => {
   link.views = link.views + 1;
   await link.save()
 
-  return res.redirect(link.target)
+   res.redirect(link.target)
 
 }
 // const getAllLinks = async (req, res) => {
@@ -61,7 +72,7 @@ const getslug = async (req, res) => {
 //   })
 // }
 const signup = async (req, res) => {
-  const { name, email, password, role } = req.body
+  const { name, email, password, role } = req.body;
   const user = new User({ name, email, password, role })
 
   try {
@@ -88,14 +99,14 @@ const signin = async (req, res) => {
     password: password
   })
   if (user) {
-    return res.json({
+     res.json({
       success: true,
       message: "login Successful",
       data: user
     })
   }
   else {
-    return res.json({
+     res.json({
       success: false,
       message: "Invalid Credentials",
       data: null
@@ -114,7 +125,7 @@ const getuserlinks = async (req, res) => {
       data: null
     })
   }
-  const links = await Link.find({ user: userId })
+  const links = await Link.find({ "user": userId }).sort({createdAt:-1})
   // console.log(links)
   return res.json({
     success: true,

@@ -43,10 +43,10 @@ function Login() {
                         placeholder='Password'
                         onChange={(e) => setPassword(e.target.value)} />
 
-                <button type="button"
-                    onClick={login}
-                    class="btn login-btn btn-success form-control">Login</button>
-                <p  className='links'>Not have account?  <Link to='/signup'>SignUp</Link > </p>
+                    <button type="button"
+                        onClick={login}
+                        class="btn login-btn btn-success form-control">Login</button>
+                    <p className='links'>Not have account?  <Link to='/signup'>SignUp</Link > </p>
                 </div>
             </form>
             <Toaster />

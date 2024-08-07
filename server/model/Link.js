@@ -23,6 +23,7 @@ const linkSchema = new Schema({
     user:{
         type: Schema.Types.ObjectId,
         ref:"User",
+        require:true
 
     }
 

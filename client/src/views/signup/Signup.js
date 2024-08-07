@@ -4,7 +4,6 @@ import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 
-
 function Signup() {
     const [user, setUser] = useState({
         name: "",
@@ -35,7 +34,7 @@ function Signup() {
     return (
         <div className='input'>
             <h2 className='my-3'>Signup</h2>
-            <form className="signup-form border border-dark mx-auto rounded-3">
+            <form className="signup-form mx-auto rounded-3">
                 <div>
 
                     <input type="text" id="username"
@@ -64,8 +63,7 @@ function Signup() {
                     onChange={(e) => setUser({ ...user, role: e.target.value })} /> */}
                     <div class="dropdown">
 
-                        <select class="dropdown-menu dropdown-toggle"
-                        >
+                        <select class="dropdown-menu dropdown-toggle">
                             <option>Job Role</option>
                             <option>Developer</option>
                             <option>Student</option>
@@ -74,7 +72,7 @@ function Signup() {
                         </select>
                     </div>
                     <button className='btn login-btn btn-success d-block form-control' onClick={signup}>signup</button>
-                   <p className='links'>Already have an account? <Link to='/signin'> SignIn</Link></p> 
+                    <p className='links'>Already have an account? <Link to='/signin'> SignIn</Link></p>
                 </div>
             </form >
             <Toaster />

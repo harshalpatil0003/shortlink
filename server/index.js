@@ -27,7 +27,7 @@ app.get("/health", (req, res) => {
     })
 }
 )
-app.get("/userslinks",getuserlinks)
+app.get("/links",getuserlinks)
 
 app.post("/link", postLink)
 

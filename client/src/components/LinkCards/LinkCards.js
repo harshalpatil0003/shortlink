@@ -4,7 +4,7 @@ import view from './eye.png'
 import link_img from '../../views/Home/link.png'
 import earth from './earth.png'
 
-function LinkCards({ title, slug, target, views, createdAt }) {
+function LinkCards({_id, title, slug, target, views, createdAt }) {
     return (
         <div className='main-card mx-auto p-4 my-4 rounded-3'>
             <h2 className='m-0'>{title || "<Untitled>"}</h2>

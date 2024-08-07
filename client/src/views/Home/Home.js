@@ -4,11 +4,16 @@ import './Home.css';
 import { toast, Toaster } from 'react-hot-toast'
 import LinkCards from './../../components/LinkCards/LinkCards.js';
 import linkicon from '../Home/link.png'
-// import User from '../../../../server/model/User.js';
 
 function Home() {
-  const [links, setlinks] = useState([]);
-  const [user, setUser] = useState('')
+  const [links, setlinks] = useState([])
+  const [user, setUser] = useState({})
+
+  // useEffect({
+  //   if(currentUser){
+
+  //   }
+  // },[])
 
   //logout function
   const logout = () => {
@@ -45,40 +50,62 @@ function Home() {
   const [linkdata, setlinkdata] = useState({
     title: "",
     target: "",
-    slug: ""
-
+    slug: "",
   });
+
   const create = async () => {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/link`, linkdata)
-   
+    const { title, slug, target } = linkdata;
+    if (!title || !target || !slug) {
+      toast.error("Please fill all the fields")
+      return
+    }
+
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/link`,
+      {
+        target,
+        title,
+        slug,
+        user
+      })
+
     if (response.data.success) {
-      toast.success("Link creaated Successfully")
-      setUser({
+      toast.success("Link created Successfully")
+      setlinkdata({
         title: "",
         target: "",
         slug: ""
       })
     }
+
     else {
       toast.error(response.data.message)
     }
-    setTimeout(()=>{
-      create()
-    },3000)
-
 
   }
-  const getAllLinks = async () => {
 
+  setTimeout(() => {
+    create()
+  }, 3000)
+
+
+  const getAllLinks = async () => {
+    if (!user._id) {
+      return
+    }
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/links?userId=${user._id}`)
-    toast.dismiss()
-    setlinks(response.data.data)
+    
+      setlinks(response.data.data)
+      toast.dismiss()
+      toast.success("all links are fetched")
+    
     // toast.success("All Links Fetched Successfully")
 
   }
   useEffect(() => {
     getAllLinks()
   }, [user])
+
+  
   return (
     <div>
       <div className='d-flex align-items-center gap-3 justify-content-center'>
@@ -95,7 +122,6 @@ function Home() {
           <input type="text" className='form-control' placeholder="title" value={linkdata.title} onChange={(e) => setlinkdata({ ...linkdata, title: e.target.value })} />
           <input type="text" className='form-control' placeholder="target" value={linkdata.target} onChange={(e) => setlinkdata({ ...linkdata, target: e.target.value })} />
           <input type="text" className='form-control' placeholder="slug" value={linkdata.slug} onChange={(e) => setlinkdata({ ...linkdata, slug: e.target.value })} />
-          <input type="text" className='form-control' placeholder="user" value={linkdata.user} onChange={(e) => setlinkdata({ ...linkdata, user: e.target.value })} />
 
         </div>
         <button type='button' className='btn btn-success d-block mx-auto mt-4 ' onClick={create}>Create</button>
@@ -104,11 +130,12 @@ function Home() {
 
       <h2 className='user-link-header my-3'>Hello {user.name}</h2>
       <div className='link-cards'>
-        {links?.map((link, i) => {
-          const { title, slug, target, views, createdAt, _id } = link
+        {links.map((link) => {
+          const { title, slug, target, views, createdAt, _id } = link;
 
           return (
             <LinkCards
+              key={_id}
               _id={_id}
               title={title}
               slug={slug}
@@ -125,7 +152,10 @@ function Home() {
 
     </div>
   )
+
 }
+
+
 
 
 export default Home
