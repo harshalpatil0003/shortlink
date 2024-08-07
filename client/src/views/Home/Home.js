@@ -82,12 +82,6 @@ function Home() {
     }
 
   }
-
-  setTimeout(() => {
-    create()
-  }, 3000)
-
-
   const getAllLinks = async () => {
     if (!user._id) {
       return
@@ -96,9 +90,8 @@ function Home() {
     
       setlinks(response.data.data)
       toast.dismiss()
-      toast.success("all links are fetched")
     
-    // toast.success("All Links Fetched Successfully")
+    toast.success("All Links Fetched Successfully")
 
   }
   useEffect(() => {
@@ -110,7 +103,7 @@ function Home() {
     <div>
       <div className='d-flex align-items-center gap-3 justify-content-center'>
         <img src={linkicon} alt='link-icon' className='link-icon d-block ' />
-        <h1 className='header'> Link Shortner</h1>
+        <h1 className='header'>Short.ly</h1>
         <button type='button' className='btn btn-danger'
           onClick={logout}
         >Logout</button>
@@ -131,12 +124,12 @@ function Home() {
       <h2 className='user-link-header my-3'>Hello {user.name}</h2>
       <div className='link-cards'>
         {links.map((link) => {
-          const { title, slug, target, views, createdAt, _id } = link;
+          const { title, slug, target, views, createdAt} = link;
 
           return (
             <LinkCards
-              key={_id}
-              _id={_id}
+              // key={_id}
+              // _id={_id}
               title={title}
               slug={slug}
               target={target}

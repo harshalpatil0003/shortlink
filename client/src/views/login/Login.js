@@ -28,7 +28,7 @@ function Login() {
     }
     return (
         <div>
-            <h2 className='my-3'>Signin</h2>
+            <h2 className='my-3 text-center'>Signin</h2>
             <form className=' login-form'>
                 <div className='d-block mx-auto inputs'>
                     <input type="email" class="form-control" id="exampleInputEmail1"

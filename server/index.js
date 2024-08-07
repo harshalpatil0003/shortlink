@@ -34,7 +34,9 @@ app.post("/link", postLink)
 // app.get("/links", getAllLinks)
 
 app.get("/:slug", getslug)
+
 app.post("/signup", signup)
+
 app.post("/signin",signin)
 
 const PORT = process.env.PORT || 3000

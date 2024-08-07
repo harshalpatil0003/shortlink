@@ -3,29 +3,26 @@
     width: 800px;
     position: relative;
     box-shadow: 5px 5px 10px 1px #868585;
-    height: 150px;
-
+    height:auto;
 }
 
 .views {
     position: absolute;
     right: 10px;
     top: 10px;
+    font-weight: 400;
 }
-
-.view-icon {
-    height: 20px;
-}
-
 .timestamp {
     position: absolute;
     right: 10px;
     bottom: 10px;
+    font-weight: 400;
+
 }
 .short-url{
     text-decoration: none;
     font-size: 20px;
-    color: rgb(134, 143, 239);
+    color: rgb(252, 131, 51);
 }
 .icon{
     height: 20px;
@@ -33,4 +30,21 @@
 .target-url{
     text-decoration: none;
     font-size: 18px;
+}
+@media screen and (max-width:600px){
+    .main-card {
+        width: 90%;
+    }
+    .short-url{
+        font-size: 13px;
+    }
+    .target-url{
+        font-size:10px;
+    }
+    .icon{
+        height: 10px;
+    }
+    .timestamp{
+        font-size: 10px;
+    }
 }

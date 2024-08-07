@@ -33,7 +33,7 @@ function Signup() {
     }
     return (
         <div className='input'>
-            <h2 className='my-3'>Signup</h2>
+            <h2 className='text-center my-3'>Signup</h2>
             <form className="signup-form mx-auto rounded-3">
                 <div>
 
