@@ -56,7 +56,7 @@ function Home() {
 
   const create = async () => {
     const { title, slug, target } = linkdata;
-    if (!title || !target || !slug) {
+    if (!target || !slug) {
       toast.error("Please fill all the fields")
       return
     }
@@ -82,6 +82,7 @@ function Home() {
       toast.error(response.data.message)
     }
 
+    
   }
   const getAllLinks = async () => {
     if (!user._id) {
