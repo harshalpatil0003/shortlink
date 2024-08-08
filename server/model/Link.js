@@ -4,7 +4,7 @@ import { Schema, model } from 'mongoose';
 const linkSchema = new Schema({
     title: {
         type: String,
-        required: true
+        require: true
     },
     target: {
         type: String,
