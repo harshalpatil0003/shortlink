@@ -1,32 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-.header{text-align: center;}
-.form-control{
+
+.header {
+    text-align: center;
+}
+
+.form-control {
     width: 400px;
     margin: 10px;
 
 }
-.input-form{
+
+.input-form {
     box-shadow: 5px 5px 10px 1px #868585;
     background-color: #f0f0f0;
 }
-.link-icon{
-    height: 50px;
+
+.link-icon {
+    height: 40px;
 }
 
-.btn{
+.btn {
     display: block;
 }
-.link-cards{
- height: 800px;
+
+.link-cards {
+    height: 800px;
     overflow-y: scroll;
     overflow: scroll;
-    background-color:#afebb7;
+    background-color: #afebb7;
 }
-.btn-danger{
+
+.btn-logout{
     position: absolute;
     right: 10px;
     top: 10px;
 }
-.user-link-header{
+
+.user-link-header {
     text-align: center;
+}
+.logout-icon{
+    height: 30px;
+}
+
+@media screen and (max-width:600px) {
+    .btn-logout{
+     height: 4vh;
+     position: absolute;
+     top: 3px;
+    }
+
+    .link-icon {
+        height: 20px;
+        left: 10px;
+        top: 50px;
+    }
+    .logout-icon{
+        height: 20px;
+    }
 }

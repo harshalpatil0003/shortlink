@@ -16,7 +16,7 @@ function LinkCards({ _id, title, slug, target, views, createdAt }) {
     }
     return (
         <div className='main-card mx-auto p-3 my-4 rounded-3'>
-            <h2 className='m-0 my-2'>{title || "<Untitled>"}</h2>
+            <h2 className='m-0 '>{title || "<Untitled>"}</h2>
             <div className='d-flex gap-2 align-items-center'>
                 <img src={link_img} alt='link' className='icon' />
                 <a href={`${process.env.REACT_APP_API_URL}/${slug}`} target='blank' className='short-url'>{process.env.REACT_APP_API_URL}/${slug} </a>

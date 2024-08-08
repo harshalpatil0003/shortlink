@@ -1,3 +1,6 @@
+.m-0{
+    
+}
 .main-card {
     background-color: #f0f0f0;
     width: 800px;
@@ -9,7 +12,7 @@
 .views {
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 20px;
     font-weight: 400;
 }
 .timestamp {
@@ -33,6 +36,9 @@
 }
 .btn-trash{
     height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
 }
 @media screen and (max-width:600px){
     .main-card {
@@ -49,5 +55,8 @@
     }
     .timestamp{
         font-size: 10px;
+    }
+    .btn-trash{
+        height: 20px;
     }
 }

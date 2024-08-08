@@ -4,6 +4,7 @@ import './Home.css';
 import { toast, Toaster } from 'react-hot-toast'
 import LinkCards from './../../components/LinkCards/LinkCards.js';
 import linkicon from '../Home/link.png'
+import logout_btn from '../Home/person.png'
 
 function Home() {
   const [links, setlinks] = useState([])
@@ -82,7 +83,7 @@ function Home() {
       toast.error(response.data.message)
     }
 
-    
+
   }
   const getAllLinks = async () => {
     if (!user._id) {
@@ -103,12 +104,11 @@ function Home() {
 
   return (
     <div>
-      <div className='d-flex align-items-center gap-3 justify-content-center'>
-        <img src={linkicon} alt='link-icon' className='link-icon d-block ' />
+      <div className='d-flex align-items-center gap-3 justify-content-center position-relative'>
+        <img src={linkicon} alt='link-icon position-absolute' className='link-icon d-block ' />
         <h1 className='header'>Short.ly</h1>
-        <button type='button' className='btn btn-danger'
-          onClick={logout}
-        >Logout</button>
+        <button type='button' className='btn btn-logout'
+          onClick={logout}><img src={logout_btn} alt='logout-icon' className='logout-icon'/> </button>
 
       </div>
 
@@ -126,7 +126,7 @@ function Home() {
       <h2 className='user-link-header my-3'>Hello {user.name}</h2>
       <div className='link-cards'>
         {links.map((link) => {
-          const {_id, title, slug, target, views, createdAt } = link;
+          const { _id, title, slug, target, views, createdAt } = link;
 
           return (
             <LinkCards
