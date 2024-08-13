@@ -40,6 +40,9 @@
     right: 10px;
     top: 50%;
 }
+.copy-icon{
+    border: none;
+}
 @media screen and (max-width:600px){
     .main-card {
         width: 90%;
