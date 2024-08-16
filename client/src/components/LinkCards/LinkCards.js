@@ -3,8 +3,8 @@ import './LinkCards.css'
 import view from './eye.png'
 import link_img from '../../views/Home/link.png'
 import axios from 'axios'
-import QRCode from 'react-qr-code'
 import earth from './earth.png'
+import QRCode from 'react-qr-code'
 import { toast, Toaster } from 'react-hot-toast'
 import trash from '../../views/Home/trash.png'
 import copy_link from '../LinkCards/copy.png'
@@ -33,7 +33,7 @@ function LinkCards({ _id, title, slug, target, views, createdAt }) {
             <h2 className='m-0 '>{title || "<Untitled>"}</h2>
             <div className='d-flex gap-2 align-items-center'>
                 <img src={link_img} alt='link' className='icon' />
-                <a href={`${process.env.REACT_APP_API_URL}/${slug}`} target='blank' className='short-url'>{process.env.REACT_APP_API_URL}/${slug} </a>
+                <a href={`${process.env.REACT_APP_API_URL}/${slug}`} target='blank' className='short-url'>{process.env.REACT_APP_API_URL}/{slug} </a>
                 <img src={copy_link} alt='copy-icon' className='icon' onClick={copy} style={{ cursor: 'pointer' }} />
             </div>
 
@@ -47,9 +47,8 @@ function LinkCards({ _id, title, slug, target, views, createdAt }) {
 
             <span className='views d-flex gap-3 align-items-center' ><img src={view} alt='views' className='icon' /> {views}</span>
             <span className='timestamp'>{new Date(createdAt).toLocaleString()}</span>
-
-            {/* {(<QRCode value={`${process.env.REACT_APP_API_URL}/${slug}`} size={100}/>)} */}
-            {(<QRCode value={`${process.env.REACT_APP_API_URL}/${slug}`} size={100} />)}
+            {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=${process.env.REACT_APP_API_URL}/${slug}`} /> */}
+            <img src={`https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=${process.env.REACT_APP_API_URL}/${slug}`} />
             <Toaster />
         </div>
     )
