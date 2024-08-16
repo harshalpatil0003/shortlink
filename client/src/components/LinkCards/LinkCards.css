@@ -43,6 +43,12 @@
 .copy-icon{
     border: none;
 }
+.qr-code{
+    height: 50px;
+    position: absolute;
+    top: 30%;
+    right: 30%;
+}
 @media screen and (max-width:600px){
     .main-card {
         width: 90%;

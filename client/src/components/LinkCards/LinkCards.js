@@ -33,7 +33,7 @@ function LinkCards({ _id, title, slug, target, views, createdAt }) {
             <h2 className='m-0 '>{title || "<Untitled>"}</h2>
             <div className='d-flex gap-2 align-items-center'>
                 <img src={link_img} alt='link' className='icon' />
-                <a href={`${process.env.REACT_APP_API_URL}/${slug}`} target='blank' className='short-url'>{process.env.REACT_APP_API_URL}/{slug} </a>
+                <a href={`${process.env.REACT_APP_API_URL}/${slug}`} target='blank' className='short-url'>{process.env.REACT_APP_API_URL}/${slug} </a>
                 <img src={copy_link} alt='copy-icon' className='icon' onClick={copy} style={{ cursor: 'pointer' }} />
             </div>
 
@@ -47,8 +47,7 @@ function LinkCards({ _id, title, slug, target, views, createdAt }) {
 
             <span className='views d-flex gap-3 align-items-center' ><img src={view} alt='views' className='icon' /> {views}</span>
             <span className='timestamp'>{new Date(createdAt).toLocaleString()}</span>
-            {/* <img src={`https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=${process.env.REACT_APP_API_URL}/${slug}`} /> */}
-            <img src={`https://api.qrserver.com/v1/create-qr-code/?size=40x40&data=${process.env.REACT_APP_API_URL}/${slug}`} />
+            <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://shortlink-vu3f.onrender.com/${slug}`}  className='qr-code'/>
             <Toaster />
         </div>
     )
