@@ -1,6 +1,4 @@
-.m-0{
-    
-}
+
 .main-card {
     background-color: #f0f0f0;
     width: 800px;
@@ -63,9 +61,32 @@
         height: 10px;
     }
     .timestamp{
-        font-size: 10px;
+        bottom: 5px;
+        font-size: 8px;
     }
     .btn-trash{
-        height: 20px;
+        height: 15px;
+        left:13px;
+        top: 70%;
+        
+
+    }
+    .m-0{
+        position: absolute;
+        font-size: 15px;
+        top: 5px;
+    }
+    .views {
+        top: 70%;
+        left:30%
+    }
+    .qr-code{
+        height: 50px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .main-card {
+        height: 80px;
     }
 }
