@@ -58,4 +58,8 @@
     .logout-icon{
         height: 20px;
     }
+    .input-form {
+        width: 90%;
+        margin: 0 auto;
+    }
 }

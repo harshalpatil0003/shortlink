@@ -8,7 +8,11 @@
     box-shadow: 0 0 10px 1px #848181;
 }
 .form-control{
-    width: 400px;
     display: block;
     margin: 20px auto;
+}
+@media screen and (max-width:600px) {
+  .signup-form {
+  margin: 0 20px;
+  }
 }
