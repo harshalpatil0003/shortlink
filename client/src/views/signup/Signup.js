@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import './Signup.css'
 import axios from 'axios'
 import { toast, Toaster } from 'react-hot-toast'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
 function Signup() {
+    const nevigate = useNavigate()
+
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -12,14 +13,23 @@ function Signup() {
         role: "",
     })
     const signup = async () => {
+
+        const { name, email, password, role } = user
+        if (!name || !email || !password) {
+            toast.error("Please fill all the fields")
+            return
+        }
         const reaponse = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, {
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            role: user.role
+            name: name,
+            email: email,
+            password: password,
+            role: role
         })
         if (reaponse.data.success) {
             toast.success(reaponse.data.message)
+            // setTimeout(()=>{
+            //     nevigate('/login')
+            // },2000)
             setUser({
                 name: "",
                 email: "",
@@ -40,11 +50,13 @@ function Signup() {
                     <input type="text" id="username"
                         className='form-control'
                         placeholder='Name'
+                        required
                         value={user.name}
                         onChange={(e) => setUser({ ...user, name: e.target.value })} />
 
                     <input type="email" id="email"
                         value={user.email}
+                        required
                         placeholder='Email'
                         onChange={(e) => setUser({ ...user, email: e.target.value })}
                         className='form-control' />
@@ -52,6 +64,7 @@ function Signup() {
 
                     <input type="password" id="password"
                         placeholder='Password'
+                        required
                         value={user.password}
                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                         className='form-control' />

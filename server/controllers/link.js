@@ -86,7 +86,7 @@ const signup = async (req, res) => {
   catch (error) {
     res.json({
       success: false,
-      message: "User not created",
+      message: "User already exist With this email" ,
       data: null
     })
 

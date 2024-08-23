@@ -3,22 +3,22 @@ import { Schema, model } from 'mongoose'
 const userSchema = new Schema({
     name: {
         type: String,
-        require:true
+        required:[true,'Enter Name']
     },
     email: {
         type: String,
         unique: true,
-        require:true
+        required:[true,'Enter Email']
 
     },
     password: {
         type: String,
-        require:true
+        required:[true,'Enter Password']
 
     },
     role: {
         type: String,
-        require:true
+        required:[true,'Enter Role']
     }
 })
 const User = model("User", userSchema)

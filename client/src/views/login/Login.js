@@ -7,8 +7,13 @@ import './Login.css'
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [user, setuser] = useState('')
 
     const login = async () => {
+        const { email, password } =user
+        if ( !email || !password) {
+            toast.error("Please Enter Credentials ")
+        }
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/signin`, {
             email: email,
             password: password
