@@ -15,10 +15,6 @@ const userSchema = new Schema({
         type: String,
         required:[true,'Enter Password']
 
-    },
-    role: {
-        type: String,
-        required:[true,'Enter Role']
     }
 })
 const User = model("User", userSchema)

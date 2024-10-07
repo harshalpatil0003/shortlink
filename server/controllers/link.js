@@ -72,8 +72,8 @@ const getslug = async (req, res) => {
 //   })
 // }
 const signup = async (req, res) => {
-  const { name, email, password, role } = req.body;
-  const user = new User({ name, email, password, role })
+  const { name, email, password } = req.body;
+  const user = new User({ name, email, password })
 
   try {
     const saveduser = await user.save()
@@ -86,14 +86,14 @@ const signup = async (req, res) => {
   catch (error) {
     res.json({
       success: false,
-      message: "User already exist With this email" ,
-      data: null
+      data: null,
+      message: "User already exist With this email" 
     })
 
   }
 }
 const signin = async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
   const user = await User.findOne({
     email: email,
     password: password

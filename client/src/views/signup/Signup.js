@@ -1,44 +1,47 @@
 import React, { useState } from 'react'
 import './Signup.css'
 import axios from 'axios'
-import { toast, Toaster } from 'react-hot-toast'
-import { Link, useNavigate } from 'react-router-dom'
+import toast, {Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 function Signup() {
-    const nevigate = useNavigate()
+    
 
     const [user, setUser] = useState({
         name: "",
         email: "",
-        password: "",
-        role: "",
+        password: ""
     })
     const signup = async () => {
 
-        const { name, email, password, role } = user
+        const { name, email, password } = user
         if (!name || !email || !password) {
             toast.error("Please fill all the fields")
             return
         }
-        const reaponse = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, {
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/signup`, {
             name: name,
             email: email,
-            password: password,
-            role: role
+            password: password
         })
-        if (reaponse.data.success) {
-            toast.success(reaponse.data.message)
-            // setTimeout(()=>{
-            //     nevigate('/login')
-            // },2000)
+        
+        
+        if (response.data.success) {
+            toast.success(response.data.message)
+           
             setUser({
                 name: "",
                 email: "",
-                password: "",
-                role: ""
+                password: ""
             })
+            
+            toast.loading('Redirecting to Dashboard...')
+            setTimeout(() => {
+                window.location.href = '/'
+            }, 3000)
         }
+
         else {
-            toast.error(reaponse.data.message)
+            toast.error(response.data.message)
         }
     }
     return (
@@ -69,21 +72,7 @@ function Signup() {
                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                         className='form-control' />
 
-                    {/* <input type="dropdown" id="role"
-                    placeholder='Job Role'
-                    value={user.role}
-                    className=' btn btn-secondary dropdown-toggle'
-                    onChange={(e) => setUser({ ...user, role: e.target.value })} /> */}
-                    <div class="dropdown">
-
-                        <select class="dropdown-menu dropdown-toggle">
-                            <option>Job Role</option>
-                            <option>Developer</option>
-                            <option>Student</option>
-                            <option>Organization</option>
-                            <option>Others</option>
-                        </select>
-                    </div>
+                    
                     <button className='btn login-btn btn-success d-block form-control' onClick={signup}>signup</button>
                     <p className='links'>Already have an account? <Link to='/signin'> SignIn</Link></p>
                 </div>

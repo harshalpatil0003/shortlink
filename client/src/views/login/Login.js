@@ -7,18 +7,22 @@ import './Login.css'
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [user, setuser] = useState('')
+    // const [user, setuser] = useState('')
 
     const login = async () => {
-        const { email, password } =user
+        // const { email, password } =user
         if ( !email || !password) {
             toast.error("Please Enter Credentials ")
-        }
+            return
+        } 
         const response = await axios.post(`${process.env.REACT_APP_API_URL}/signin`, {
             email: email,
-            password: password
+            password:password
         })
+
         if (response.data.success) {
+            console.log(response);
+            
             toast.success(response.data.message)
             localStorage.setItem('currentUser', JSON.stringify(response.data.data))
 
