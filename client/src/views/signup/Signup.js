@@ -4,15 +4,12 @@ import axios from 'axios'
 import toast, {Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 function Signup() {
-    
-
     const [user, setUser] = useState({
         name: "",
         email: "",
         password: ""
     })
     const signup = async () => {
-
         const { name, email, password } = user
         if (!name || !email || !password) {
             toast.error("Please fill all the fields")
@@ -23,7 +20,6 @@ function Signup() {
             email: email,
             password: password
         })
-        
         
         if (response.data.success) {
             toast.success(response.data.message)

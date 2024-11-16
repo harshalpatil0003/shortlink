@@ -25,7 +25,6 @@ function Login() {
             
             toast.success(response.data.message)
             localStorage.setItem('currentUser', JSON.stringify(response.data.data))
-
             toast.loading('Redirecting to Dashboard...')
             setTimeout(() => {
                 window.location.href = '/'
